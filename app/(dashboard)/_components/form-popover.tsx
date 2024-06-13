@@ -36,10 +36,10 @@ const FormPopover = ({
     try {
       const firstName = formData.get("firstname") as string;
       const lastName = formData.get("lastname") as string;
-      await handleUpdateUser(userId, firstName, lastName);
+      const id = formData.get("userid") as string;
+      await handleUpdateUser(id, firstName, lastName);
       toast.success("the details have been updated");
     } catch (error) {
-      toast.error("Unable to update the  details");
       console.log(error);
     }
   };
@@ -53,8 +53,8 @@ const FormPopover = ({
         sideOffset={sideOffset}
         className="w-80 pt-3"
       >
-        <div className="flex items-center justify-center pb-3 text-sm text-neutral-800  ">
-          Update user info
+        <div className="flex items-center justify-start pb-3 text-sm text-neutral-500  ">
+          Update user details
         </div>
         <PopoverClose asChild ref={closeRef}>
           <Button
@@ -66,13 +66,20 @@ const FormPopover = ({
           </Button>
         </PopoverClose>
         <form className="space-y-3" action={handleSubmit}>
+          <Input
+            hidden
+            className="hidden"
+            id="userid"
+            name="userid"
+            defaultValue={userId}
+          />
           <div className="space-y-1">
             <Label htmlFor="firstname"> First Name</Label>
             <Input
               id="firstname"
               name="firstname"
               defaultValue={firstname}
-              className="h-7 py-1  text-lg px-[7px] bg-transparent font-semibold focus-visible:outline-none focus-visible:ring-transparent border-none"
+              className="h-7 py-1   px-[7px] bg-transparent  focus-visible:outline-none focus-visible:ring-transparent border-none"
             />
           </div>
           <div className="space-y-1">
@@ -81,7 +88,7 @@ const FormPopover = ({
               id="lastname"
               name="lastname"
               defaultValue={lastname}
-              className="h-7 py-1  text-lg px-[7px] bg-transparent font-semibold focus-visible:outline-none focus-visible:ring-transparent border-none"
+              className="h-7 py-1   px-[7px] bg-transparent  focus-visible:outline-none focus-visible:ring-transparent border-none"
             />
           </div>
 

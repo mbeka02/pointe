@@ -1,6 +1,8 @@
 import { Navbar } from "./_components/navbar";
 import { Toaster } from "sonner";
 import { Sidebar } from "./_components/sidebar";
+export const dynamic = "force-dynamic";
+
 export default function DashboardLayout({
   children,
 }: {

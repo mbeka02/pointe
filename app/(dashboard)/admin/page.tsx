@@ -3,7 +3,6 @@ import { UsersTable } from "../_components/users-table";
 import { redirect } from "next/navigation";
 import { checkRole } from "@/app/utils";
 
-export const dynamic = "force-dynamic";
 export default async function AdminPage() {
   /*use the Clerk backend SDK to get the user list*/
   const { data: users } = await clerkClient.users.getUserList({

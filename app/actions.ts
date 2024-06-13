@@ -16,14 +16,14 @@ export async function setRole(formData: FormData) {
         publicMetadata: { role: formData.get("role") },
       },
     );
-    revalidatePath("/user-profile");
-    return { message: res.publicMetadata };
+    //refactor this
+    revalidatePath("/", "layout");
+    console.log(res.publicMetadata);
   } catch (err) {
     console.log(err);
     throw "Unable to update role";
   }
 }
-//serve actions
 
 const handleDeleteUser = async (userId: string) => {
   try {
