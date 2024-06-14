@@ -31,7 +31,6 @@ const handleDeleteUser = async (userId: string) => {
     console.log(response);
     revalidatePath("/super-admin");
     revalidatePath("admin");
-    return { message: response };
   } catch (err) {
     console.log(err);
     throw "Unable to delete the user";
@@ -51,12 +50,30 @@ const handleUpdateUser = async (
     console.log(response);
     revalidatePath("/super-admin");
     revalidatePath("admin");
-
-    return { message: response };
   } catch (err) {
     console.log(err);
     throw "Unable to update the user details";
   }
 };
 
-export { handleDeleteUser, handleUpdateUser };
+const handleCreateUser = async (
+  firstName: string,
+  lastName: string,
+  email: string,
+) => {
+  try {
+    await clerkClient.users.createUser({
+      firstName,
+      lastName,
+      //default password
+      password: `#${firstName + lastName}@2024`,
+      emailAddress: [email],
+    });
+    revalidatePath("/(dashboard)", "layout");
+  } catch (err) {
+    console.log(err);
+    throw "Unable to create user account";
+  }
+};
+
+export { handleDeleteUser, handleUpdateUser, handleCreateUser };

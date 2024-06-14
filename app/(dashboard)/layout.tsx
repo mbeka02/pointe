@@ -2,7 +2,8 @@ import { Navbar } from "./_components/navbar";
 import { Toaster } from "sonner";
 import { Sidebar } from "./_components/sidebar";
 import { checkRole } from "../utils";
-//temprary fix for the caching issue
+import { ModalProvider } from "@/components/providers/modal-provider";
+//temporary fix for the caching issue
 export const revalidate = 0;
 
 export default function DashboardLayout({
@@ -20,7 +21,7 @@ export default function DashboardLayout({
       </div>
       <div className="flex flex-col">
         <Navbar isSuperAdmin={isSuperAdmin} />
-
+        <ModalProvider />
         {children}
       </div>
       <Toaster />

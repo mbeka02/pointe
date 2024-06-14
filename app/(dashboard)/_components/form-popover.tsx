@@ -38,9 +38,10 @@ const FormPopover = ({
       const lastName = formData.get("lastname") as string;
       const id = formData.get("userid") as string;
       await handleUpdateUser(id, firstName, lastName);
-      toast.success("the details have been updated");
+      toast.success("the account details have been updated");
     } catch (error) {
       console.log(error);
+      toast.error("unable to update account details");
     }
   };
 
@@ -75,21 +76,11 @@ const FormPopover = ({
           />
           <div className="space-y-1">
             <Label htmlFor="firstname"> First Name</Label>
-            <Input
-              id="firstname"
-              name="firstname"
-              defaultValue={firstname}
-              className="h-7 py-1   px-[7px] bg-transparent  focus-visible:outline-none focus-visible:ring-transparent border-none"
-            />
+            <Input id="firstname" name="firstname" defaultValue={firstname} />
           </div>
           <div className="space-y-1">
             <Label htmlFor="lastname"> Last Name</Label>
-            <Input
-              id="lastname"
-              name="lastname"
-              defaultValue={lastname}
-              className="h-7 py-1   px-[7px] bg-transparent  focus-visible:outline-none focus-visible:ring-transparent border-none"
-            />
+            <Input id="lastname" name="lastname" defaultValue={lastname} />
           </div>
 
           <Button className="w-full">Update</Button>

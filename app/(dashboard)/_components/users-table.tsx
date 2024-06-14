@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/table";
 import { User } from "@clerk/nextjs/server";
 import FormPopover from "./form-popover";
+import { CreateUserButton } from "./create-user-button";
 interface UserProps {
   users: User[];
 }
@@ -17,8 +18,9 @@ interface UserProps {
 const UsersTable = ({ users }: UserProps) => {
   return (
     <>
-      <div className="flex items-center mb-4 px-2 mt-4">
+      <div className="flex w-full justify-between items-center mb-4 px-2 mt-4">
         <h1 className="font-semibold text-lg md:text-2xl">Users</h1>
+        <CreateUserButton />
       </div>
       <div className="w-full mb-4 px-2">
         <form className="border shadow-sm rounded-lg">
@@ -71,7 +73,10 @@ const UserRow = ({ user }: { user: User }) => {
         </FormPopover>
       </TableCell>
       <TableCell>
-        <Button formAction={deleteUserWithId} className=" bg-rose-600">
+        <Button
+          formAction={deleteUserWithId}
+          className=" bg-rose-600 hover:bg-rose:800"
+        >
           Delete User
         </Button>
       </TableCell>
