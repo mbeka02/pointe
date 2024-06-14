@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 import { Sidebar } from "./sidebar";
 /* Currently this component has a bug*/
-const MobileSidebar = () => {
+const MobileSidebar = ({ isSuperAdmin }: { isSuperAdmin: boolean }) => {
   const pathname = usePathname();
   const [isMounted, setIsMounted] = useState(false);
   const isOpen = useMobileSidebar((state) => state.isOpen);
@@ -38,7 +38,7 @@ const MobileSidebar = () => {
       </Button>
       <Sheet open={isOpen} onOpenChange={onClose}>
         <SheetContent side="left" className="p-2 pt-10">
-          <Sidebar />
+          <Sidebar isSuperAdmin={isSuperAdmin} />
         </SheetContent>
       </Sheet>
     </>

@@ -17,7 +17,7 @@ export async function setRole(formData: FormData) {
       },
     );
     //refactor this
-    revalidatePath("/", "layout");
+    revalidatePath("/(dashboard)", "layout");
     console.log(res.publicMetadata);
   } catch (err) {
     console.log(err);

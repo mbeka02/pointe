@@ -13,14 +13,18 @@ export default function UserPage() {
             <form action={setRole}>
               <input type="hidden" value={userId!} name="id" />
               <input type="hidden" value="admin" name="role" />
-              <Button type="submit">Make me an admin</Button>
+              <Button type="submit" className="w-52">
+                Make me an admin
+              </Button>
             </form>
           </div>
           <div>
             <form action={setRole}>
               <input type="hidden" value={userId!} name="id" />
               <input type="hidden" value="super-admin" name="role" />
-              <Button type="submit">Make me a super-admin</Button>
+              <Button type="submit" className="w-52">
+                Make me a super-admin
+              </Button>
             </form>
           </div>
         </div>

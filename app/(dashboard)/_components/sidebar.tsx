@@ -2,11 +2,10 @@ import Link from "next/link";
 import { Logo, SettingsIcon } from "@/components/icons";
 import { NavItem } from "./nav-item";
 import { BarChart } from "lucide-react";
-import { checkRole } from "@/app/utils";
 
-const Sidebar = () => {
+const Sidebar = ({ isSuperAdmin }: { isSuperAdmin: boolean }) => {
   return (
-    <div className="hidden border-r bg-gray-100/40 lg:block dark:bg-gray-800/40">
+    <div className=" border-r bg-gray-100/40 block dark:bg-gray-800/40">
       <div className="flex h-full max-h-screen flex-col gap-2">
         <div className="flex h-[60px] items-center border-b px-5">
           <Link className="flex items-center gap-2 font-semibold" href="/">
@@ -22,7 +21,7 @@ const Sidebar = () => {
             </NavItem>
             {
               /* conditionally render the panel link based on authorization level*/
-              checkRole("super-admin") ? (
+              isSuperAdmin ? (
                 <NavItem href="/super-admin">
                   <BarChart className="h-4 w-4" />
                   Super Admin Panel

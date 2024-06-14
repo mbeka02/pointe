@@ -2,7 +2,6 @@ import { clerkClient } from "@clerk/nextjs/server";
 import { UsersTable } from "../_components/users-table";
 import { redirect } from "next/navigation";
 import { checkRole } from "@/app/utils";
-export const dynamic = "force-dynamic";
 export default async function SuperAdminPage() {
   /*use the Clerk backend SDK to get the user list*/
   const { data: users } = await clerkClient.users.getUserList({
